@@ -1,5 +1,7 @@
 {
   "name": "conversiones",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

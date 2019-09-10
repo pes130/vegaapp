@@ -1,0 +1,58 @@
+<ion-header no-border>
+  <ion-toolbar>
+    <ion-title>
+      Conversiones
+    </ion-title>
+  </ion-toolbar>
+  <ion-segment 
+          scrollable 
+          mode="md" 
+          color="primary"
+          (ionChange)="cambioConversion($event)">
+    <ion-segment-button mode="md" [value]="conversion" *ngFor="let conversion of conversionesArr">
+      <ion-label class="ion-text-capitalize">{{conversion}}</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+</ion-header>
+
+<ion-content>
+  <form #formulario="ngForm" (ngSubmit)="realizarCalculo()">
+    <ion-list>
+      <ion-item>
+        <ion-label position="stacked">{{conversionObject.origenTit}} <ion-text color="danger">*</ion-text></ion-label>
+        <ion-input 
+            type="number" 
+            name="cantidadUsuario" 
+            [(ngModel)]="cantidadUsuario" 
+            (ionChange)="borrarResultadoPrevio()"
+            required 
+        >
+        </ion-input>
+      </ion-item>
+     
+    </ion-list>
+    <ion-button 
+      expand="full" 
+      color="primary" 
+      class="boton-calcular"
+      type="submit"
+      [disabled]="formulario.invalid">
+      Pasar a {{conversionObject.destinoTit}}
+    </ion-button>
+  </form>
+
+  <ion-grid *ngIf="mostrarResultado">
+      <ion-row>
+        <ion-col size-xs="12" size-lg="4">
+          {{cantidadUsuario}} {{conversionObject.origenTit}} son
+        </ion-col>
+        <ion-col size-xs="12" size-lg="4">
+            <ion-text color="primary" class="resultado">{{resultado | number}}</ion-text>
+        </ion-col>
+        <ion-col size-xs="12" size-lg="4">
+            {{conversionObject.destinoTit}}
+        </ion-col>
+      </ion-row>
+  </ion-grid>
+    
+</ion-content>

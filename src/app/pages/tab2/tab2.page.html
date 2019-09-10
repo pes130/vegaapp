@@ -1,0 +1,15 @@
+<ion-header no-border>
+  <ion-toolbar>
+    <ion-title>
+      Historial de conversiones
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let op of operaciones">
+      <ion-label><strong>{{op.cantidadOriginal}}</strong> {{op.unidadOrigen}} = <strong>{{op.cantidadResultado}}</strong> {{op.unidadDestino}}</ion-label>
+    </ion-item>  
+  </ion-list>
+</ion-content>
